@@ -94,7 +94,7 @@ if (isset($errors)) {
 
 <?php else: ?>
 
-    <p>There is no active contest.</p>
+    <p>There is no active tournament.</p>
 
 <?php endif; ?>
 

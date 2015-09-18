@@ -116,6 +116,7 @@ fileup.onchange = function() {
 
 form.onsubmit = function() {
     if (fileup.value == "") {
+        document.getElementById("filename").classList.add("error");
         return false;
     }
 };

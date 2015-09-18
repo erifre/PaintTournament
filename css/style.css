@@ -15,6 +15,26 @@ p {
     margin: 0.5em 0;
 }
 
+button, .button span {
+    background-color: #F5F6F7;
+    background-image: url('../images/button.png');
+    border: #aaa 1px solid;
+    border-radius: 0.4em;
+    box-sizing: content-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
+    font-size: 1em;
+    line-height: 1.3em;
+    padding: 0.25em 1em 0.25em 1em;
+    width: auto;
+}
+
+button:hover, .button:hover {
+    background-color: #F0F1F2;
+}
+
 .error {
     color: #bb0000;
     font-weight: bold;
@@ -40,4 +60,31 @@ p {
 #preview {
     max-height: 100%;
     max-width: 100%;
+}
+
+#filename:disabled {
+    background-color: #fff;
+    font-size: 1em;
+    color: #000;
+    border: 0;
+    margin: 1em 0;
+    width: 200px;
+}
+
+.fileUpload {
+    display: inline;
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }

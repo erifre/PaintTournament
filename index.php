@@ -88,9 +88,13 @@ if (isset($errors)) {
 
         <p>Please select the image you wish to upload.</p>
 
-        <input type="file" id="browse" name="fileup" accept="image/png,image/jpeg" />
+        <p>File to upload: <input type="text" id="filename" placeholder="No file selected" disabled="disabled" /></p>
+        <div class="fileUpload button">
+            <span>Select file</span>
+            <input type="file" id="fileup" name="fileup" class="upload" accept="image/png,image/jpeg" />
+        </div>
 
-        <button type="submit">Upload</button>
+        <button type="submit" id="submit">Upload</button>
     </form>
 
 <?php else: ?>
@@ -100,9 +104,22 @@ if (isset($errors)) {
 <?php endif; ?>
 
     </div>
-
-    <img id="preview" />
 </div>
+
+<script>
+var fileup = document.getElementById("fileup");
+var form = document.getElementsByTagName("form")[0];
+
+fileup.onchange = function() {
+    document.getElementById("filename").value = this.value;
+};
+
+form.onsubmit = function() {
+    if (fileup.value == "") {
+        return false;
+    }
+};
+</script>
 
 </body>
 </html>

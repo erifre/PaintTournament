@@ -1,0 +1,39 @@
+html,body{
+    background: #202020;
+    font-family: verdana,arial;
+    font-size: 1em;
+}
+
+body {
+    background-image: url('../background.png');
+    margin: 1em auto auto auto;
+    height: 684px;
+    width: 896px;
+}
+
+.error {
+    color: #bb0000;
+    font-weight: bold;
+}
+
+.success {
+    color: #00bb00;
+    font-weight: bold;
+}
+
+#content {
+    display: block;
+    width: 869px;
+    height: 493px;
+    margin: 151px 0 0 12px;
+    position: fixed;
+}
+
+#textcontainer {
+    margin: 1em;
+}
+
+#preview {
+    max-height: 100%;
+    max-width: 100%;
+}

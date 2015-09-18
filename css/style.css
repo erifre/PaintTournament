@@ -11,6 +11,10 @@ body {
     width: 896px;
 }
 
+p {
+    margin: 0.5em 0;
+}
+
 .error {
     color: #bb0000;
     font-weight: bold;

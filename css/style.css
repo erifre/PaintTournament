@@ -5,7 +5,7 @@ html,body{
 }
 
 body {
-    background-image: url('../background.png');
+    background-image: url('../images/background.png');
     margin: 1em auto auto auto;
     height: 684px;
     width: 896px;

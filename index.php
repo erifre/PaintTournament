@@ -62,6 +62,7 @@ elseif (!empty($_SESSION['success'])) {
     <title>Paint tournament</title>
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="Shortcut Icon" href="images/favicon.ico" />
 </head>
 <body>
 

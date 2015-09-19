@@ -31,8 +31,8 @@ button, .button span {
     width: auto;
 }
 
-button:hover, .button:hover {
-    background-color: #F0F1F2;
+strong {
+    font-weight: bold;
 }
 
 p.error {

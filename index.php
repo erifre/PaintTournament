@@ -11,6 +11,8 @@ elseif (!is_numeric($config['maxSize'])) {
     exit('ERROR: Max size is not set correctly!');
 }
 
+$formats = array_keys(array_filter($config['allowedTypes'], function($k) { return $k; }));
+
 // Check if the upload is active and the user is uploading
 if ($active && isset($_FILES['fileup'])) {
 
@@ -23,7 +25,7 @@ if ($active && isset($_FILES['fileup'])) {
 
     // Check the file type
     $type = exif_imagetype($_FILES['fileup']['tmp_name']);
-    if (!in_array($type, $config['allowedTypes'])) {
+    if (!($type == 1 && in_array('gif', $formats)) && !($type == 2 && in_array('jpeg', $formats)) && !($type == 3 && in_array('png', $formats))) {
         $errors[] = 'File type not allowed!';
     }
 
@@ -53,6 +55,17 @@ elseif (!empty($_SESSION['errors'])) {
 elseif (!empty($_SESSION['success'])) {
     $success = $_SESSION['success'];
     unset($_SESSION['success']);
+}
+
+if (count($formats) == 1) {
+    $outFormat = ' is <strong>'.$formats[0].'</strong>';
+}
+else {
+    $outFormat = 's are ';
+    for ($i = 0; $i < count($formats)-1; $i++) {
+        $outFormat.= '<strong>'.$formats[$i].'</strong>, ';
+    }
+    $outFormat = substr($outFormat, 0, -2).' and <strong>'.$formats[$i].'</strong>';
 }
 ?>
 <!DOCTYPE html>
@@ -86,12 +99,12 @@ if (isset($errors)) {
 ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
-        <p>Please select the image you wish to upload.</p>
+        <p>Please select the image you wish to upload. Allowed format<?php echo $outFormat; ?>. The max size is <strong><?php echo $config['maxSize']; ?></strong> KiB.</p>
 
         <p>File to upload: <input type="text" id="filename" placeholder="No file selected" disabled="disabled" /></p>
         <div class="fileUpload button">
             <span>Select file</span>
-            <input type="file" id="fileup" name="fileup" class="upload" accept="image/png,image/jpeg" />
+            <input type="file" id="fileup" name="fileup" class="upload" accept="<?php echo 'image/'.implode(',image/', $formats); ?>" />
         </div>
 
         <button type="submit" id="submit">Upload</button>
